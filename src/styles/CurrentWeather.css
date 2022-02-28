@@ -3,11 +3,22 @@
 }
 .CurrentWeather-image {
   width: 150px;
+  height: 150px;
   margin: 30px auto 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .CurrentWeather-image img {
   width: 100%;
   height: 100%;
+}
+.CurrentWeather-image .Loader {
+  width: 100%;
+  height: 100%;
+  font-size: 36px;
+
+  animation: spin 1s linear infinite;
 }
 .CurrentWeather-content {
   height: 100%;
@@ -50,4 +61,13 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

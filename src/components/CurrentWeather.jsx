@@ -1,10 +1,14 @@
 import { format } from 'date-fns';
-import image from '../images/Shower.png';
+import getWeatherIcon from '../utils/getWeatherIcon';
+import { BiLoaderAlt as Loader } from 'react-icons/bi';
 import { IoLocationSharp as LocationSharpIcon } from 'react-icons/io5';
 
 import '../styles/CurrentWeather.css';
 
 const CurrentWeather = ({ currentWeather, location }) => {
+  const image = currentWeather.weather
+    ? getWeatherIcon(currentWeather.weather[0].icon)
+    : '';
   const temp = Math.round(currentWeather.temp) || 0;
   const description = currentWeather.weather
     ? currentWeather.weather[0].description
@@ -16,8 +20,11 @@ const CurrentWeather = ({ currentWeather, location }) => {
 
   return (
     <section className="CurrentWeather">
-      <figure className="CurrentWeather-image">
-        <img src={image} alt="weather_state_name icon" />
+      <figure
+        className="CurrentWeather-image"
+        style={{ backgroundImage: `url(${image})` }}
+      >
+        {!image && <Loader className="Loader" />}
       </figure>
       <div className="CurrentWeather-content">
         <h1 className="CurrentWeather-temp">

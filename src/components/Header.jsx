@@ -3,6 +3,11 @@ import { BiCurrentLocation as LocationIcon } from 'react-icons/bi';
 import '../styles/Header.css';
 
 const Header = ({ updateState }) => {
+  const handleSearch = () => {
+    const menu = document.getElementById('menu');
+    menu.classList.add('active');
+  };
+
   const handleLocation = () => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(
@@ -16,7 +21,7 @@ const Header = ({ updateState }) => {
 
   return (
     <header className="Header">
-      <button className="Header-search" type="button">
+      <button className="Header-search" type="button" onClick={handleSearch}>
         Search for places
       </button>
       <button
