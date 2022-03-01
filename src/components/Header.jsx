@@ -2,26 +2,24 @@ import { BiCurrentLocation as LocationIcon } from 'react-icons/bi';
 
 import '../styles/Header.css';
 
-const Header = ({ updateState }) => {
-  const handleSearch = () => {
+const Header = ({ updateWeather }) => {
+  const handleLocation = () => {
+    const onSuccess = position => updateWeather(position.coords);
+    const onError = err => console.error('Geolocation error: ', err.message);
+
+    'geolocation' in navigator
+      ? navigator.geolocation.getCurrentPosition(onSuccess, onError)
+      : alert('Gelocation API is not available');
+  };
+
+  const toggleSearch = e => {
     const menu = document.getElementById('menu');
     menu.classList.add('active');
   };
 
-  const handleLocation = () => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        position => updateState(position.coords),
-        err => console.log('Geolocation error: ', err.message)
-      );
-    } else {
-      alert('Gelocation API is not available');
-    }
-  };
-
   return (
     <header className="Header">
-      <button className="Header-search" type="button" onClick={handleSearch}>
+      <button className="Header-search" type="button" onClick={toggleSearch}>
         Search for places
       </button>
       <button

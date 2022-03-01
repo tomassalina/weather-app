@@ -17,9 +17,13 @@ const getWeatherIcon = weatherConditionCode => {
     '04d': heavyCloudImage,
     '04n': heavyCloudImage,
     '09d': showerImage,
+    '09n': showerImage,
     '10d': heavyRainImage,
+    '10n': heavyRainImage,
     '11d': thunderstormImage,
+    '11n': thunderstormImage,
     '13d': snowImage,
+    '13n': snowImage,
   };
 
   return codes[weatherConditionCode];

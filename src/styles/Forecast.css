@@ -1,0 +1,38 @@
+.Forecast {
+  display: grid;
+  grid-template-columns: 120px 120px;
+  grid-template-rows: 1fr;
+  grid-gap: 26px;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.Forecast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  background-color: var(--secondary-color);
+}
+.Forecast-item-date {
+  font: 500 normal 16px / 19px var(--primary-font);
+}
+.Forecast-item-image {
+  width: 70px;
+  height: 70px;
+  background-position: top left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-top: 8px;
+  margin-bottom: 25px;
+}
+.Forecast-item-temp {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}

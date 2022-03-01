@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { defaultLocations } from '../utils/getData';
+
 import {
   AiOutlineSearch,
   AiOutlineClose,
@@ -6,7 +8,7 @@ import {
 } from 'react-icons/ai';
 import '../styles/AsideMenu.css';
 
-const AsideMenu = ({ updateState, defaultLocations }) => {
+const AsideMenu = ({ updateWeather }) => {
   const [search, setSearch] = useState('');
 
   const handleSearch = async e => {
@@ -18,7 +20,7 @@ const AsideMenu = ({ updateState, defaultLocations }) => {
 
     if (data.length > 0) {
       const { lat, lon } = data[0];
-      updateState({ latitude: lat, longitude: lon });
+      updateWeather({ latitude: lat, longitude: lon });
       handleClose();
     }
   };
@@ -53,7 +55,10 @@ const AsideMenu = ({ updateState, defaultLocations }) => {
             key={loc.locationName}
             type="button"
             onClick={() => {
-              updateState({ latitude: loc.latitude, longitude: loc.longitude });
+              updateWeather({
+                latitude: loc.latitude,
+                longitude: loc.longitude,
+              });
               handleClose();
             }}
           >
