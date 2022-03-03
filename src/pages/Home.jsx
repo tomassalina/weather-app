@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getWeather, defaultLocations } from '../utils/getData';
+import { getData } from '../utils/getData';
 
 import Header from '../components/Header';
 import CurrentWeather from '../components/CurrentWeather';
@@ -12,34 +12,61 @@ import '../styles/Home.css';
 
 const Home = () => {
   const [weather, setWeather] = useState({
-    current: { name: '', main: {}, weather: [], sys: {}, wind: {} },
+    current: {},
     forecast: [],
+    isLoading: false,
+    errorMessage: '',
   });
 
-  const loadData = async ({ latitude, longitude }) => {
-    const [currentWeather, dailyForecast] = await getWeather({
-      latitude,
-      longitude,
-    });
+  const loadWeather = async location => {
+    setWeather({ ...weather, isLoading: true });
 
-    setWeather({
-      current: currentWeather,
-      forecast: dailyForecast.daily.filter((item, index) => {
-        if (index >= 1 && index <= 5) return item;
-      }),
-    });
+    try {
+      const currentWeather = await getData({
+        ...location,
+        collection: 'weather',
+      });
+
+      const dailyForecast = await getData({
+        latitude: currentWeather.coord?.lat,
+        longitude: currentWeather.coord?.lon,
+        collection: 'onecall',
+      });
+
+      setWeather({
+        current: currentWeather,
+        forecast: dailyForecast.daily.filter((item, index) => {
+          if (index >= 1 && index <= 5) return item;
+        }),
+        isLoading: false,
+        errorMessage: '',
+      });
+    } catch (err) {
+      console.error(err);
+      setWeather({
+        ...weather,
+        isLoading: false,
+        errorMessage: err,
+      });
+    }
   };
 
   useEffect(() => {
-    loadData(defaultLocations[0]);
+    loadWeather({ locationName: 'San Francisco' });
   }, []);
 
   return (
     <>
       <main className="hero">
-        <Header updateWeather={loadData} />
-        <CurrentWeather currentWeather={weather.current} />
-        <AsideMenu updateWeather={loadData} />
+        <Header updateWeather={loadWeather} />
+        <CurrentWeather
+          currentWeather={weather.current}
+          isLoading={weather.isLoading}
+        />
+        <AsideMenu
+          updateWeather={loadWeather}
+          errorMessage={weather.errorMessage}
+        />
       </main>
       <Forecast forecast={weather.forecast} />
       <Hightlights currentWeather={weather.current} />

@@ -5,21 +5,21 @@ import { IoLocationSharp as LocationSharpIcon } from 'react-icons/io5';
 
 import '../styles/CurrentWeather.css';
 
-const CurrentWeather = ({ currentWeather }) => {
-  const { name, weather, main, sys } = currentWeather;
+const CurrentWeather = ({ currentWeather, isLoading }) => {
+  const { name, weather, main } = currentWeather;
 
-  const temp = Math.round(main.temp) || 0;
-  const description = weather.length > 0 ? weather[0].main : 'Loading...';
+  const temp = Math.round(main?.temp) || 0;
+  const description = weather?.length > 0 && weather[0].main;
   const today = format(new Date(), 'iii, d LLL');
-  const image = weather.length > 0 ? getWeatherIcon(weather[0].icon) : '';
+  const image = weather?.length > 0 ? getWeatherIcon(weather[0].icon) : '';
 
   return (
     <section className="CurrentWeather">
       <figure
         className="CurrentWeather-image"
-        style={{ backgroundImage: `url(${image})` }}
+        style={{ backgroundImage: `url(${isLoading ? '' : image})` }}
       >
-        {!image && <Loader className="Loader" />}
+        {isLoading && <Loader className="Loader" />}
       </figure>
       <div className="CurrentWeather-content">
         <h1 className="CurrentWeather-temp">
@@ -27,14 +27,14 @@ const CurrentWeather = ({ currentWeather }) => {
           <span>°C</span>
         </h1>
         <h2 className="CurrentWeather-state">
-          {description[0].toUpperCase() + description.slice(1)}
+          {isLoading ? 'Loading...' : description}
         </h2>
         <p className="CurrentWeather-date">
           Today <span>•</span> {today}
         </p>
         <p className="CurrentWeather-location">
           <LocationSharpIcon />
-          {name} ({sys.country})
+          {name}
         </p>
       </div>
     </section>

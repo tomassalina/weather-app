@@ -5,6 +5,7 @@ import showerImage from '../images/Shower.png';
 import heavyRainImage from '../images/HeavyRain.png';
 import thunderstormImage from '../images/Thunderstorm.png';
 import snowImage from '../images/Snow.png';
+import defaultImage from '../images/Cloud-background.png';
 
 const getWeatherIcon = weatherConditionCode => {
   const codes = {
@@ -26,7 +27,7 @@ const getWeatherIcon = weatherConditionCode => {
     '13n': snowImage,
   };
 
-  return codes[weatherConditionCode];
+  return codes[weatherConditionCode] || defaultImage;
 };
 
 export default getWeatherIcon;

@@ -15,23 +15,23 @@ const Hightlights = ({ currentWeather }) => {
       <article className="Hightlights-item">
         <h3 className="Hightlights-type">Wind status</h3>
         <p className="Hightlights-value">
-          {Math.round(wind.speed)}
+          {Math.round(wind?.speed)}
           <span> mph</span>
         </p>
         <section className="Hightlights-windDirection">
           <div>
             <FaLocationArrow
               className="Hightlights-windDirection-icon"
-              style={{ transform: `rotate(${wind.deg - 45}deg)` }}
+              style={{ transform: `rotate(${wind?.deg - 45}deg)` }}
             />
           </div>
-          <span>{wind.deg} deg</span>
+          <span>{wind?.deg} deg</span>
         </section>
       </article>
       <article className="Hightlights-item">
         <h3 className="Hightlights-type">Humidity</h3>
         <p className="Hightlights-value">
-          {main.humidity}
+          {main?.humidity}
           <span>%</span>
         </p>
         <section className="Hightlights-humidity">
@@ -43,7 +43,7 @@ const Hightlights = ({ currentWeather }) => {
           <div className="Hightlights-humidity-statusbar">
             <div
               className="Hightlights-humidity-internalbar"
-              style={{ width: `${main.humidity}%` }}
+              style={{ width: `${main?.humidity}%` }}
             ></div>
           </div>
           <p>%</p>
@@ -59,7 +59,7 @@ const Hightlights = ({ currentWeather }) => {
       <article className="Hightlights-item">
         <h3 className="Hightlights-type">Air pressure</h3>
         <p className="Hightlights-value">
-          {main.pressure}
+          {main?.pressure}
           <span> mb</span>
         </p>
       </article>

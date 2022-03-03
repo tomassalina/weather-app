@@ -1,28 +1,26 @@
-import { useState } from 'react';
-import { defaultLocations } from '../utils/getData';
+import { useState, useEffect } from 'react';
 
 import {
   AiOutlineSearch,
   AiOutlineClose,
   AiOutlineRight,
 } from 'react-icons/ai';
+import { MdErrorOutline } from 'react-icons/md';
 import '../styles/AsideMenu.css';
 
-const AsideMenu = ({ updateWeather }) => {
+const AsideMenu = ({ updateWeather, errorMessage }) => {
   const [search, setSearch] = useState('');
+  const defaultLocations = [
+    'San Francisco',
+    'Buenos Aires',
+    'London',
+    'Barcelona',
+  ];
 
   const handleSearch = async e => {
     e.preventDefault();
-    const res = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=6a1ddb216b2f48966cd789b4bdc81cbf`
-    );
-    const data = await res.json();
 
-    if (data.length > 0) {
-      const { lat, lon } = data[0];
-      updateWeather({ latitude: lat, longitude: lon });
-      handleClose();
-    }
+    await updateWeather({ locationName: search });
   };
 
   const handleClose = () => {
@@ -30,11 +28,16 @@ const AsideMenu = ({ updateWeather }) => {
     menu.classList.remove('active');
   };
 
+  useEffect(() => {
+    if (!errorMessage) handleClose();
+  }, [errorMessage]);
+
   return (
     <aside className="AsideMenu" id="menu">
       <button className="AsideMenu-close" onClick={handleClose}>
         <AiOutlineClose />
       </button>
+
       <form className="AsideMenu-search" onSubmit={handleSearch}>
         <label htmlFor="search">
           <AiOutlineSearch className="AsideMenu-search-icon" />
@@ -49,20 +52,25 @@ const AsideMenu = ({ updateWeather }) => {
         </label>
         <button type="submit">Search</button>
       </form>
+
+      {errorMessage && (
+        <div className="AsideMenu-error">
+          <MdErrorOutline />
+          <p>city not found</p>
+        </div>
+      )}
+
       <div className="AsideMenu-options">
         {defaultLocations.map(loc => (
           <button
-            key={loc.locationName}
+            key={loc}
             type="button"
             onClick={() => {
-              updateWeather({
-                latitude: loc.latitude,
-                longitude: loc.longitude,
-              });
+              updateWeather({ locationName: loc });
               handleClose();
             }}
           >
-            <p>{loc.locationName}</p>
+            <p>{loc}</p>
             <AiOutlineRight className="AsideMenu-options-icon" />
           </button>
         ))}

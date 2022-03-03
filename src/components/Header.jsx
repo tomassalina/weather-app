@@ -4,7 +4,11 @@ import '../styles/Header.css';
 
 const Header = ({ updateWeather }) => {
   const handleLocation = () => {
-    const onSuccess = position => updateWeather(position.coords);
+    const onSuccess = position =>
+      updateWeather({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
     const onError = err => console.error('Geolocation error: ', err.message);
 
     'geolocation' in navigator
