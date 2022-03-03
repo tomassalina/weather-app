@@ -5,9 +5,12 @@ import '../styles/Hightlights.css';
 const Hightlights = ({ currentWeather }) => {
   const { wind, main, visibility } = currentWeather;
 
-  const visibilityInMiles = (visibility * 0.000621371)
-    .toFixed(1)
-    .replace('.', ',');
+  const windSpeed = wind?.speed ? Math.round(wind?.speed) : 0;
+  const humidity = main?.humidity ? main?.humidity : 0;
+  const visibilityInMiles = visibility
+    ? (visibility * 0.000621371).toFixed(1).replace('.', ',')
+    : 0;
+  const airPressure = main?.pressure ? main?.pressure : 0;
 
   return (
     <section className="Hightlights">
@@ -15,7 +18,7 @@ const Hightlights = ({ currentWeather }) => {
       <article className="Hightlights-item">
         <h3 className="Hightlights-type">Wind status</h3>
         <p className="Hightlights-value">
-          {Math.round(wind?.speed)}
+          {windSpeed}
           <span> mph</span>
         </p>
         <section className="Hightlights-windDirection">
@@ -31,7 +34,7 @@ const Hightlights = ({ currentWeather }) => {
       <article className="Hightlights-item">
         <h3 className="Hightlights-type">Humidity</h3>
         <p className="Hightlights-value">
-          {main?.humidity}
+          {humidity}
           <span>%</span>
         </p>
         <section className="Hightlights-humidity">
@@ -59,7 +62,7 @@ const Hightlights = ({ currentWeather }) => {
       <article className="Hightlights-item">
         <h3 className="Hightlights-type">Air pressure</h3>
         <p className="Hightlights-value">
-          {main?.pressure}
+          {airPressure}
           <span> mb</span>
         </p>
       </article>

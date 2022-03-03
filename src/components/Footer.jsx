@@ -4,7 +4,8 @@ const Footer = () => {
   return (
     <footer className="Footer">
       <p className="Footer-text">
-        created by <a href="#">salinatomass</a> - devChallenges.io
+        created by <a href="https://github.com/salinatomass">salinatomass</a> -
+        devChallenges.io
       </p>
     </footer>
   );
