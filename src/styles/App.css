@@ -9,6 +9,7 @@
   --gray: #88869d;
   --soft-gray: #a09fb1;
   --btn-gray: #6e707a;
+  --yellow: #ffec65;
 }
 
 * {
@@ -27,4 +28,11 @@ body {
 
 button {
   cursor: pointer;
+}
+
+h1 {
+  font: 600 normal 144px / 144px var(--primary-font);
+}
+h3 {
+  font: 500 normal 16px / 19px var(--primary-font);
 }

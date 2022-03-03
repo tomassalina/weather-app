@@ -1,0 +1,13 @@
+.Footer {
+  margin-top: 80px;
+  padding: 24px 0;
+  text-align: center;
+}
+.Footer-text {
+  color: var(--soft-gray);
+  font-size: 16px;
+  line-height: 19px;
+}
+.Footer-text a {
+  color: var(--white);
+}

@@ -24,11 +24,6 @@
   height: 100%;
   padding-bottom: 90px;
 }
-.CurrentWeather-temp {
-  font-size: 144px;
-  font-weight: 600;
-  line-height: 144px;
-}
 .CurrentWeather-temp span {
   font-size: 60px;
   color: var(--soft-gray);

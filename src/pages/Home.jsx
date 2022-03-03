@@ -5,12 +5,14 @@ import Header from '../components/Header';
 import CurrentWeather from '../components/CurrentWeather';
 import AsideMenu from '../components/AsideMenu';
 import Forecast from '../components/Forecast';
+import Hightlights from '../components/Hightlights';
+import Footer from '../components/Footer';
 
 import '../styles/Home.css';
 
 const Home = () => {
   const [weather, setWeather] = useState({
-    current: { name: '', main: {}, weather: [], sys: {} },
+    current: { name: '', main: {}, weather: [], sys: {}, wind: {} },
     forecast: [],
   });
 
@@ -40,6 +42,8 @@ const Home = () => {
         <AsideMenu updateWeather={loadData} />
       </main>
       <Forecast forecast={weather.forecast} />
+      <Hightlights currentWeather={weather.current} />
+      <Footer />
     </>
   );
 };

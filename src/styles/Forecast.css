@@ -16,9 +16,6 @@
   padding: 20px 0;
   background-color: var(--secondary-color);
 }
-.Forecast-item-date {
-  font: 500 normal 16px / 19px var(--primary-font);
-}
 .Forecast-item-image {
   width: 70px;
   height: 70px;

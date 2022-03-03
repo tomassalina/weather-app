@@ -1,0 +1,80 @@
+.Hightlights {
+  padding: 0 23px;
+}
+.Hightlights-title {
+  font: 700 normal normal 24px / 29px var(--primary-font);
+}
+.Hightlights-item {
+  width: 100%;
+  max-width: 330px;
+  margin: 32px auto 0;
+
+  background-color: var(--secondary-color);
+  padding: 22px 10px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.Hightlights-value {
+  font: 700 normal 64px / 75px var(--primary-font);
+}
+.Hightlights-value span {
+  font: 500 normal 32px / 37px var(--primary-font);
+}
+
+.Hightlights-windDirection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+.Hightlights-windDirection > div {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.Hightlights-windDirection-icon {
+  font-size: 8px;
+}
+
+.Hightlights-humidity {
+  width: 80%;
+  margin-top: 20px;
+}
+.Hightlights-humidity-percentages {
+  display: flex;
+  justify-content: space-between;
+}
+.Hightlights-humidity-percentages span {
+  width: 30px;
+}
+.Hightlights-humidity-percentages span:first-child {
+  text-align: start;
+}
+.Hightlights-humidity-percentages span:nth-child(2) {
+  text-align: center;
+}
+.Hightlights-humidity-percentages span:last-child {
+  text-align: end;
+}
+.Hightlights-humidity-statusbar {
+  height: 8px;
+  background-color: var(--white);
+  border-radius: 80px;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+.Hightlights-humidity-internalbar {
+  width: 0;
+  height: 100%;
+  background-color: var(--yellow);
+  border-radius: 80px;
+}
+.Hightlights-humidity p {
+  text-align: end;
+}
