@@ -56,8 +56,8 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <main className="hero">
+    <div className="Home-wrapper">
+      <main className="Home-hero">
         <Header updateWeather={loadWeather} />
         <CurrentWeather
           currentWeather={weather.current}
@@ -68,10 +68,20 @@ const Home = () => {
           errorMessage={weather.errorMessage}
         />
       </main>
-      <Forecast forecast={weather.forecast} />
-      <Hightlights currentWeather={weather.current} />
-      <Footer />
-    </>
+      <div className="Home-info">
+        <section className="Home-units">
+          <button type="button" className="Home-units-celcius active">
+            °C
+          </button>
+          <button type="button" className="Home-units-fahrenheit">
+            °F
+          </button>
+        </section>
+        <Forecast forecast={weather.forecast} />
+        <Hightlights currentWeather={weather.current} />
+        <Footer />
+      </div>
+    </div>
   );
 };
 

@@ -1,4 +1,51 @@
-.hero {
+.Home-hero {
   padding: 0 11px;
   background-color: var(--secondary-color);
+}
+.Home-info {
+  padding-bottom: 30px;
+}
+.Home-units {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .Home-wrapper {
+    padding-left: 400px;
+  }
+
+  .Home-hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 100%;
+  }
+
+  .Home-info {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+
+  .Home-units {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  .Home-units button {
+    width: 40px;
+    height: 40px;
+    background-color: var(--gray);
+    border: none;
+    border-radius: 50%;
+    font: 700 normal 18px / 21px var(--primary-font);
+    color: var(--white);
+    text-align: center;
+  }
+  .Home-units button.active {
+    background-color: var(--white);
+    color: #110e3c;
+  }
 }

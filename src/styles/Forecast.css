@@ -9,6 +9,8 @@
 }
 
 .Forecast-item {
+  min-width: 120px;
+  max-width: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,4 +34,13 @@
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+@media screen and (min-width: 1024px) {
+  .Forecast {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }

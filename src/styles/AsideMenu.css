@@ -11,7 +11,7 @@
   background-color: var(--secondary-color);
 
   opacity: 0;
-  transform: translateX(-1000px);
+  transform: translateX(-100vw);
   transition: 0.3s transform;
   will-change: transform;
 }
@@ -49,6 +49,7 @@
   border: 1px solid var(--btn-gray);
 }
 .AsideMenu-search input {
+  width: 100%;
   font: 500 normal 16px 19px var(--primary-font);
   color: var(--white);
   background-color: transparent;
@@ -72,7 +73,6 @@
   display: flex;
   flex-direction: column;
   gap: 50px;
-  overflow-y: scroll;
   padding-bottom: 38px;
 }
 .AsideMenu-options button {
@@ -104,5 +104,11 @@
   padding: 0 12px 12px;
   color: #da1212;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 1024px) {
+  .AsideMenu {
+    width: 400px;
+  }
 }

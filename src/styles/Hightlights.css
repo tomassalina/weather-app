@@ -78,3 +78,18 @@
 .Hightlights-humidity p {
   text-align: end;
 }
+
+@media screen and (min-width: 1024px) {
+  .Hightlights {
+    padding: 0;
+  }
+  .Hightlights-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 250px max-content;
+    grid-gap: 20px;
+  }
+  .Hightlights-item {
+    max-width: 100%;
+  }
+}
