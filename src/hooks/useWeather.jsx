@@ -7,8 +7,8 @@ const useWeather = () => {
     forecast: [],
     isLoading: false,
     errorMessage: '',
-    units: 'metric',
   });
+  const [units, setUnits] = useState('metric');
 
   const loadWeather = async location => {
     setWeather(prevWeather => ({ ...prevWeather, isLoading: true }));
@@ -17,14 +17,14 @@ const useWeather = () => {
       const currentWeather = await getData({
         ...location,
         collection: 'weather',
-        units: weather.units,
+        units,
       });
 
       const dailyForecast = await getData({
         latitude: currentWeather.coord?.lat,
         longitude: currentWeather.coord?.lon,
         collection: 'onecall',
-        units: weather.units,
+        units,
       });
 
       setWeather(prevWeather => ({
@@ -34,7 +34,7 @@ const useWeather = () => {
         }),
         isLoading: false,
         errorMessage: '',
-        units: prevWeather.units,
+        units,
       }));
     } catch (err) {
       console.error(err);
@@ -48,9 +48,9 @@ const useWeather = () => {
 
   useEffect(() => {
     loadWeather({ locationName: 'San Francisco' });
-  }, []);
+  }, [units]);
 
-  return { weather, loadWeather };
+  return { weather, loadWeather, setUnits, units };
 };
 
 export default useWeather;

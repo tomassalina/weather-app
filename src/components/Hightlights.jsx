@@ -2,10 +2,12 @@ import { FaLocationArrow } from 'react-icons/fa';
 
 import '../styles/Hightlights.css';
 
-const Hightlights = ({ currentWeather }) => {
+const Hightlights = ({ currentWeather, units }) => {
   const { wind, main, visibility } = currentWeather;
+  console.log(visibility);
 
   const windSpeed = wind?.speed ? Math.round(wind?.speed) : 0;
+  const windSpeedUnit = units === 'metric' ? 'm/s' : 'mph';
   const humidity = main?.humidity ? main?.humidity : 0;
   const visibilityInMiles = visibility
     ? (visibility * 0.000621371).toFixed(1).replace('.', ',')
@@ -20,7 +22,7 @@ const Hightlights = ({ currentWeather }) => {
           <h3 className="Hightlights-type">Wind status</h3>
           <p className="Hightlights-value">
             {windSpeed}
-            <span> mph</span>
+            <span> {windSpeedUnit}</span>
           </p>
           <section className="Hightlights-windDirection">
             <div>

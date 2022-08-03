@@ -8,9 +8,10 @@ import Footer from '../components/Footer';
 import useWeather from '../hooks/useWeather';
 
 import '../styles/Home.css';
+import Units from '../components/Units';
 
 const Home = () => {
-  const { weather, loadWeather } = useWeather();
+  const { weather, loadWeather, units, setUnits } = useWeather();
 
   return (
     <div className="Home-wrapper">
@@ -18,6 +19,7 @@ const Home = () => {
         <Header updateWeather={loadWeather} />
         <CurrentWeather
           currentWeather={weather.current}
+          units={units}
           isLoading={weather.isLoading}
         />
         <AsideMenu
@@ -27,16 +29,9 @@ const Home = () => {
         />
       </main>
       <div className="Home-info">
-        <section className="Home-units">
-          <button type="button" className="Home-units-celcius active">
-            °C
-          </button>
-          <button type="button" className="Home-units-fahrenheit">
-            °F
-          </button>
-        </section>
-        <Forecast forecast={weather.forecast} />
-        <Hightlights currentWeather={weather.current} />
+        <Units units={units} changeUnits={setUnits} />
+        <Forecast forecast={weather.forecast} units={units} />
+        <Hightlights currentWeather={weather.current} units={units} />
         <Footer />
       </div>
     </div>

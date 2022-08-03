@@ -5,13 +5,14 @@ import { IoLocationSharp as LocationSharpIcon } from 'react-icons/io5';
 
 import '../styles/CurrentWeather.css';
 
-const CurrentWeather = ({ currentWeather, isLoading }) => {
+const CurrentWeather = ({ currentWeather, isLoading, units }) => {
   const { name, weather, main } = currentWeather;
 
   const temp = Math.round(main?.temp) || 0;
   const description = weather?.length > 0 && weather[0].main;
   const today = format(new Date(), 'iii, d LLL');
   const image = weather?.length > 0 ? getWeatherIcon(weather[0].icon) : '';
+  const celciusOrFarenheit = units === 'metric' ? 'C' : 'F';
 
   return (
     <section className="CurrentWeather">
@@ -24,7 +25,7 @@ const CurrentWeather = ({ currentWeather, isLoading }) => {
       <div className="CurrentWeather-content">
         <h1 className="CurrentWeather-temp">
           {temp}
-          <span>°C</span>
+          <span>°{celciusOrFarenheit}</span>
         </h1>
         <h2 className="CurrentWeather-state">
           {isLoading ? 'Loading...' : description}
