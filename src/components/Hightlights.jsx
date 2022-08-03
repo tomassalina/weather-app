@@ -4,7 +4,6 @@ import '../styles/Hightlights.css';
 
 const Hightlights = ({ currentWeather, units }) => {
   const { wind, main, visibility } = currentWeather;
-  console.log(visibility);
 
   const windSpeed = wind?.speed ? Math.round(wind?.speed) : 0;
   const windSpeedUnit = units === 'metric' ? 'm/s' : 'mph';

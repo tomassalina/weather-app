@@ -19,13 +19,12 @@ const AsideMenu = ({ updateWeather, errorMessage }) => {
 
   const handleSearch = async e => {
     e.preventDefault();
-
     await updateWeather({ locationName: search });
   };
 
   const handleClose = () => {
-    const menu = document.getElementById('menu');
-    menu.classList.remove('active');
+    const $menu = document.getElementById('menu');
+    $menu.classList.remove('active');
   };
 
   useEffect(() => {
@@ -45,6 +44,7 @@ const AsideMenu = ({ updateWeather, errorMessage }) => {
             type="text"
             autoComplete="address-level1"
             name="search"
+            id="search"
             value={search}
             placeholder="search location"
             onChange={e => setSearch(e.target.value)}

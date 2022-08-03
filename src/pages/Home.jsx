@@ -25,7 +25,6 @@ const Home = () => {
         <AsideMenu
           updateWeather={loadWeather}
           errorMessage={weather.errorMessage}
-          isLoading={weather.isLoading}
         />
       </main>
       <div className="Home-info">

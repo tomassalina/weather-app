@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+
 import getWeatherIcon from '../utils/getWeatherIcon';
 import { BiLoaderAlt as Loader } from 'react-icons/bi';
 import { IoLocationSharp as LocationSharpIcon } from 'react-icons/io5';
