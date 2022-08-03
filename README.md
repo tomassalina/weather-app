@@ -1,6 +1,12 @@
-# Create App: React Webpack
+# Weather App
 
-Simple React **template** using Webpack 5
+A complete Weather App using React and Webpack
+
+## Preview
+
+[Link](https://weather-dev-app.netlify.app/)
+
+![Weather App Preview](./preview.png)
 
 ## Getting Started
 
