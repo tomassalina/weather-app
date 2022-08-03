@@ -1,9 +1,17 @@
-export const getData = ({ collection, locationName, latitude, longitude }) =>
+const API_KEY = '6a1ddb216b2f48966cd789b4bdc81cbf';
+
+export const getData = ({
+  collection,
+  locationName,
+  latitude,
+  longitude,
+  units,
+}) =>
   new Promise(async (resolve, reject) => {
     let baseAPI;
-    const API_KEY = '6a1ddb216b2f48966cd789b4bdc81cbf';
+
     const options = {
-      units: 'metric',
+      units,
       exclude: 'current,minutely,hourly,alerts',
     };
 
